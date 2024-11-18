@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
     selectedCards = cards// 24 cartas (12 pares)
   }
 
-  
+
   // Inicializar el juego con las cartas seleccionadas
   memoryGame = new MemoryGame(selectedCards);
   memoryGame.shuffleCards();
@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
 
     // Agregar evento al botón "Play Again" para redirigir a index.html
     document.getElementById("play-again-button").addEventListener("click", () => {
-      window.location.href = "/index.html";
+      window.location.href = "game.html";
     });
 
     // Eliminar eventos de clic en las cartas (desactivar el juego)

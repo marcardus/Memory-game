@@ -40,8 +40,6 @@ class MemoryGame {
     
     return this.pairsGuessed === this.cards.length / 2; 
     
-    localStorage.setItem('Score', memoryGame.score);
-    window.location.href = '/score.html';
   }
 
   // Método para reiniciar el juego

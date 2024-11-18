@@ -44,12 +44,12 @@ function startTimer() {
 
 function endGame() {
   clearInterval(timerInterval);
-  
+
   // Guardar la puntuación final en localStorage
   localStorage.setItem('finalScore', memoryGame.score);
-  
+
   // Redirigir a la página de Game Over
-  window.location.href = '/gameOver.html'; // Asegúrate de que esta URL sea correcta
+  window.location.href = 'gameOver.html'; // Asegúrate de que esta URL sea correcta
 }
 
 window.addEventListener("load", () => {
@@ -61,7 +61,7 @@ window.addEventListener("load", () => {
 function renderBoard() {
   const board = document.getElementById("memory-board");
   board.innerHTML = "";
-  console.log('memoryGame.cards.length: ',memoryGame.cards.length);
+  console.log('memoryGame.cards.length: ', memoryGame.cards.length);
 
   memoryGame.cards.forEach((card) => {
     const cardElement = document.createElement("div");
@@ -70,7 +70,7 @@ function renderBoard() {
 
     cardElement.innerHTML = `
       <div class="back" name="${card.img}"></div>
-      <div class="front" style="background: url(img/${card.img}) no-repeat"></div>
+      <div class="front" style="background: url(./img/${card.img}) no-repeat"></div>
     `;
     cardElement.addEventListener("click", handleCardClick);
     board.appendChild(cardElement);
@@ -103,14 +103,14 @@ function handleCardClick(event) {
     } else {
       memoryGame.pickedCards = [];
       updateStats();
-      console.log('parejas adivinadas',memoryGame.pairsGuessed);
+      console.log('parejas adivinadas', memoryGame.pairsGuessed);
 
 
       if (memoryGame.checkIfFinished()) {
         clearInterval(timerInterval);
         // Aquí también se podría redirigir a la página de Game Over si se ha ganado
         localStorage.setItem('finalScore', memoryGame.score);
-        window.location.href = '/score.html'; // Asegúrate de que esta URL sea correcta
+        window.location.href = 'score.html'; // Asegúrate de que esta URL sea correcta
       }
     }
   }
@@ -122,14 +122,3 @@ function updateStats() {
   document.getElementById("pairs-guessed").innerText = memoryGame.pairsGuessed;
 }
 
-/*
- document.getElementById("play-again-button").addEventListener("click", () => {
-  clearInterval(timerInterval);
-  timeLeft = 60;
-  memoryGame.resetGame();
-  updateStats();
-  startTimer();
-  renderBoard();
-});
-
-*/
